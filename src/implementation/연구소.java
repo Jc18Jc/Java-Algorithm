@@ -3,24 +3,6 @@ package implementation;
 import java.io.*;
 import java.util.*;
 
-class Node {
-    int x;
-    int y;
-
-    public int getX() {
-        return x;
-    }
-
-    public Node(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getY() {
-        return y;
-    }
-}
-
 public class 연구소 {
     static int N;
     static int M;
@@ -49,8 +31,8 @@ public class 연구소 {
 
         while (!q.isEmpty()) {
             Node popNode = q.remove();
-            int ci = popNode.getX();
-            int cj = popNode.getY();
+            int ci = popNode.getI();
+            int cj = popNode.getJ();
             for (int t = 0; t < 4; t++) {
                 int ni = ci + dx[t];
                 int nj = cj + dy[t];
@@ -92,7 +74,7 @@ public class 연구소 {
 
         if (len < 3) {
             for (Node n : emptyList) {
-                map[n.getX()][n.getY()] = 1;
+                map[n.getI()][n.getJ()] = 1;
             }
             int count = bfs(map);
             System.out.println(count);
@@ -112,9 +94,9 @@ public class 연구소 {
                         newMap[l] = Arrays.copyOf(map[l], M);
                     }
 
-                    newMap[node1.getX()][node1.getY()] = 1;
-                    newMap[node2.getX()][node2.getY()] = 1;
-                    newMap[node3.getX()][node3.getY()] = 1;
+                    newMap[node1.getI()][node1.getJ()] = 1;
+                    newMap[node2.getI()][node2.getJ()] = 1;
+                    newMap[node3.getI()][node3.getJ()] = 1;
                     int count = bfs(newMap);
                     answer = answer < count ? count : answer;
                 }
